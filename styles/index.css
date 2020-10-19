@@ -3,3 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 /* Stop purging. */
+
+.overlay-container {
+  height: calc(100vh - 30px);
+}
