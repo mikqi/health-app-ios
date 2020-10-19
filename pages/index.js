@@ -1,5 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
+import Header from '../components/Header'
+import Card from '../components/Card'
 
 const offcanvas = {
   hidden: { y: '100%', opacity: 0 },
@@ -30,38 +32,34 @@ export default function Home() {
         variants={container}
         initial="hidden"
         animate={active ? 'zoomOut' : 'show'}
-        className="flex items-center justify-center min-h-screen overflow-hidden bg-gray-100"
+        className="p-4 min-h-screen overflow-hidden bg-gray-200"
       >
-        <motion.button
-          type="button"
-          className="py-2 px-5 bg-blue-500 text-white rounded-lg"
-          whileTap={{ scale: 0.9 }}
-          onTap={() => setActive(!active)}
-        >
-          Click Me
-        </motion.button>
-      </motion.div>
-      <motion.div
-        initial="hidden"
-        animate={active ? 'show' : 'hidden'}
-        variants={overlay}
-        style={{ pointerEvents: 'auto' }}
-        className="z-0 fixed w-screen h-screen bg-black opacity-75 top-0 left-0"
-        onClick={() => setActive(!active)}
-      >
-        <span className="w-full h-full absolute top-0 left-0">&nbsp;</span>
+        <Header />
+        <Card handleTap={() => setActive(!active)} />
       </motion.div>
       <AnimatePresence>
         {active && (
-          <motion.div
-            variants={offcanvas}
-            initial="hidden"
-            animate="show"
-            exit="exit"
-            className="overlay-container w-full bg-white absolute rounded-t-3xl shadow-md bottom-0"
-          >
-            Hello
-          </motion.div>
+          <>
+            <motion.div
+              initial="hidden"
+              animate={active ? 'show' : 'hidden'}
+              variants={overlay}
+              style={{ pointerEvents: 'auto' }}
+              className="z-0 fixed w-screen h-screen bg-black opacity-75 top-0 left-0"
+              onClick={() => setActive(!active)}
+            >
+              <span className="w-full h-full absolute top-0 left-0">&nbsp;</span>
+            </motion.div>
+            <motion.div
+              variants={offcanvas}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+              className="overlay-container w-full bg-white absolute rounded-t-3xl shadow-md bottom-0"
+            >
+              Hello
+            </motion.div>
+          </>
         ) }
       </AnimatePresence>
     </>
