@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
-import { chevronLeft } from './Icons'
+import { chevronLeft, noteIcon } from './Icons'
+import Panel from './Panel'
+import Title from './Title'
 
 const Offcanvas = ({ variants, setActive }) => (
   <motion.div
@@ -18,15 +20,50 @@ const Offcanvas = ({ variants, setActive }) => (
     </div>
     <div>
       <div className="flex flex-col items-center">
-        <div className="my-4 h-4">Icon</div>
+        <div className="my-4 p-3 rounded-full bg-white">
+          <img src="/images/health-icon.jpg" className="h-10" alt="health-icon" />
+        </div>
         <div className="text-xl font-bold">Health Checklist</div>
         <div className="my-1 text-center text-sm">Set up your iPhone to keep an eye on things for you</div>
         <div className="text-xs mb-4 text-gray-600">The following reflect the settings of &quot;Your Phone&quot;</div>
       </div>
     </div>
     <div className="px-4">
-      <h1 className="text-lg font-bold mb-1 mt-2">Inactive</h1>
-      {/* <Card /> */}
+      <Title title="Inactive" />
+
+      <Panel className="pr-4 py-2 flex">
+        <div className="w-32 flex items-start justify-center">
+          {noteIcon}
+        </div>
+        <div>
+          <div className="font-semibold">
+            Medical ID
+          </div>
+          <div className="text-gray-600 border-gray-300 border-b pb-1 leading-5 text-sm">
+            Medical ID gives first responders vital information in an emergency
+          </div>
+          <div className="text-blue-500 font-medium">
+            Set Up
+          </div>
+        </div>
+      </Panel>
+
+      <Title title="Active" />
+      <Panel className="px-4 py-2 flex">
+        <div className="w-32 flex items-start justify-center pr-4">
+          <div className="w-12 h-12 flex justify-center items-center font-bold text-white rounded-full bg-red-600">
+            SOS
+          </div>
+        </div>
+        <div>
+          <div className="font-semibold">
+            Emergency SOS
+          </div>
+          <div className="text-gray-600 leading-5 text-sm">
+            Your iPhone can quickly call emergency services and message your emergency contacts. This feature is always active.
+          </div>
+        </div>
+      </Panel>
     </div>
   </motion.div>
 )
