@@ -10,11 +10,11 @@ const Offcanvas = ({ variants, setActive }) => (
     className="overlay-container w-full bg-gray-200 absolute rounded-t-lg shadow-md bottom-0"
   >
     <div className="flex justify-between px-4 py-3 bg-white rounded-t-lg font-medium">
-      <button type="button" className="text-blue-500 flex items-center" onClick={() => setActive(false)}>
-        {chevronLeft}
+      <button type="button" className="text-blue-600 flex items-center" onClick={() => setActive(false)}>
+        {chevronLeft()}
         <span className="ml-1">Back</span>
       </button>
-      <button type="button" className="text-blue-500" onClick={() => setActive(false)}>Done</button>
+      <button type="button" className="text-blue-600" onClick={() => setActive(false)}>Done</button>
     </div>
     <div>
       <div className="flex flex-col items-center">

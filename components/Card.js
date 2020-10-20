@@ -17,7 +17,7 @@ const Card = ({ handleTap }) => (
       <div className="w-40 flex justify-center">{sparkleIcon}</div>
       <div className="ml-4 flex flex-col">
         <span className="font-bold">Make sure the health features on your iPhone are set up the way you want them.</span>
-        <span className="text-blue-500">Review</span>
+        <span className="text-blue-600">Review</span>
       </div>
     </div>
   </motion.div>
