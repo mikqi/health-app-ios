@@ -15,7 +15,7 @@ const sparkleIcon = (
 const Card = ({ handleTap }) => (
   <motion.div
     whileTap={{ scale: 0.9 }}
-    onTap={handleTap}
+    onClick={handleTap}
     className="bg-white rounded-xl"
   >
     <div className="flex justify-between items-center px-4 py-2 border-b">

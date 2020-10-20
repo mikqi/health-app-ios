@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { Fragment, useState } from 'react'
+import { useState } from 'react'
 import Header from '../components/Header'
 import Card from '../components/Card'
 
@@ -12,10 +12,10 @@ const offcanvas = {
 const container = {
   hidden: { opacity: 0 },
   show: {
-    opacity: 1, scale: 1, borderRadius: '0px', transition: { duration: 0.5 },
+    opacity: 1, y: 0, scale: 1, borderRadius: '0px', transition: { duration: 0.5 },
   },
   zoomOut: {
-    scale: 0.95, y: -10, borderRadius: '15px', transition: { duration: 0.3 },
+    scale: 0.95, y: 0, borderRadius: '15px', transition: { duration: 0.7 },
   },
 }
 
@@ -26,6 +26,7 @@ const overlay = {
 
 export default function Home() {
   const [active, setActive] = useState(false)
+
   return (
     <>
       <motion.div
@@ -35,7 +36,7 @@ export default function Home() {
         className="p-4 min-h-screen overflow-hidden bg-gray-200"
       >
         <Header />
-        <Card handleTap={() => setActive(!active)} />
+        <Card handleTap={() => setActive(true)} />
       </motion.div>
       <AnimatePresence>
         {active && (
@@ -46,7 +47,7 @@ export default function Home() {
               variants={overlay}
               style={{ pointerEvents: 'auto' }}
               className="z-0 fixed w-screen h-screen bg-black opacity-75 top-0 left-0"
-              onClick={() => setActive(!active)}
+              onClick={() => setActive(false)}
             >
               <span className="w-full h-full absolute top-0 left-0">&nbsp;</span>
             </motion.div>
@@ -55,7 +56,7 @@ export default function Home() {
               initial="hidden"
               animate="show"
               exit="exit"
-              className="overlay-container w-full bg-white absolute rounded-t-3xl shadow-md bottom-0"
+              className="overlay-container w-full bg-white absolute rounded-t-lg shadow-md bottom-0"
             >
               Hello
             </motion.div>
